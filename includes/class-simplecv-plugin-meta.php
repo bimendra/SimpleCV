@@ -27,9 +27,9 @@ class SimpleCV_Plugin_Meta {
      * @since 1.0
      */
     public function add_plugin_meta_links($links, $file) {
-        if (plugin_basename(SIMPLECV_CLASSIC_PATH . 'simplecv-classic.php') === $file) {
+        if (plugin_basename(SIMPLECV_PATH . 'simplecv.php') === $file) {
             $links[] = '<a href="https://bimendra.me/wordpress/plugins/simplecv" target="_blank">' .
-                        esc_html__('Documentation', SIMPLECV_CLASSIC_TEXTDOMAIN) . '</a>';
+                        esc_html__('Documentation', SIMPLECV_TEXTDOMAIN) . '</a>';
         }
         return $links;
     }

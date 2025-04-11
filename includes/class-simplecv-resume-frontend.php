@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 /**
- * Handles frontend asset loading for the SimpleCV Classic plugin.
+ * Handles frontend asset loading for the SimpleCV plugin.
  *
  * Enqueues styles for rendering resume posts on the frontend.
  *
@@ -29,9 +29,9 @@ class SimpleCV_Resume_Frontend {
         if (is_singular('resume')) {
             wp_enqueue_style(
                 'simplecv-resume-style',
-                SIMPLECV_CLASSIC_URL . 'css/resume.css',
+                SIMPLECV_URL . 'css/resume.css',
                 [],
-                SIMPLECV_CLASSIC_VERSION
+                SIMPLECV_VERSION
             );
         }
     }

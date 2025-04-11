@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: SimpleCV Classic
+ * Plugin Name: SimpleCV
  * Plugin URI: https://bimendra.me/wordpress/plugins/simplecv
  * Description: Allows non-technical professionals to create an effective resume for their personal website. Requires the CMB2 plugin.
  * Version: 1.0
@@ -12,10 +12,10 @@
 
 defined('ABSPATH') || exit;
 
-define('SIMPLECV_CLASSIC_VERSION', '1.0');
-define('SIMPLECV_CLASSIC_PATH', plugin_dir_path(__FILE__));
-define('SIMPLECV_CLASSIC_URL', plugin_dir_url(__FILE__));
-define('SIMPLECV_CLASSIC_TEXTDOMAIN', 'simplecv');
+define('SIMPLECV_VERSION', '1.0');
+define('SIMPLECV_PATH', plugin_dir_path(__FILE__));
+define('SIMPLECV_URL', plugin_dir_url(__FILE__));
+define('SIMPLECV_TEXTDOMAIN', 'simplecv');
 define('SIMPLECV_REQUIRED_CMB2_VERSION', '2.10.1');
 
 /**
@@ -70,10 +70,10 @@ add_action('admin_notices', function () {
         $plugin_inactive = $plugin_installed && is_plugin_inactive($plugin_file);
 
         echo '<div class="notice notice-warning is-dismissible">';
-        echo '<p><strong>' . esc_html__('SimpleCV Classic requires the CMB2 plugin.', 'simplecv') . '</strong></p>';
+        echo '<p><strong>' . esc_html__('SimpleCV requires the CMB2 plugin.', 'simplecv') . '</strong></p>';
 
         if ($plugin_inactive) {
-            echo '<p>' . esc_html__('The CMB2 plugin is installed but not activated. Please activate it to use SimpleCV Classic.', 'simplecv') . '</p>';
+            echo '<p>' . esc_html__('The CMB2 plugin is installed but not activated. Please activate it to use SimpleCV.', 'simplecv') . '</p>';
         } else {
             echo '<p>' . esc_html__('To use this plugin, you need the CMB2 plugin (version 2.10.1 or newer).', 'simplecv') . '</p>';
         }
@@ -96,12 +96,12 @@ add_action('admin_notices', function () {
  * Load plugin features if CMB2 is available.
  */
 if (!apply_filters('simplecv_cmb2_unmet', false)) {
-    require_once SIMPLECV_CLASSIC_PATH . 'includes/class-simplecv-resume-cpt.php';
-    require_once SIMPLECV_CLASSIC_PATH . 'includes/class-simplecv-resume-metabox.php';
-    require_once SIMPLECV_CLASSIC_PATH . 'includes/class-simplecv-resume-frontend.php';
-    require_once SIMPLECV_CLASSIC_PATH . 'includes/class-simplecv-resume-shortcode.php';
-    require_once SIMPLECV_CLASSIC_PATH . 'includes/class-simplecv-resume-shortcode-box.php';
-    require_once SIMPLECV_CLASSIC_PATH . 'includes/class-simplecv-plugin-meta.php';
+    require_once SIMPLECV_PATH . 'includes/class-simplecv-resume-cpt.php';
+    require_once SIMPLECV_PATH . 'includes/class-simplecv-resume-metabox.php';
+    require_once SIMPLECV_PATH . 'includes/class-simplecv-resume-frontend.php';
+    require_once SIMPLECV_PATH . 'includes/class-simplecv-resume-shortcode.php';
+    require_once SIMPLECV_PATH . 'includes/class-simplecv-resume-shortcode-box.php';
+    require_once SIMPLECV_PATH . 'includes/class-simplecv-plugin-meta.php';
 
     new SimpleCV_Resume_CPT();
     new SimpleCV_Resume_Metabox();

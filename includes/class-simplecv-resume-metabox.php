@@ -40,9 +40,9 @@ class SimpleCV_Resume_Metabox {
         if ($hook === 'post.php' && $post && $post->post_type === 'resume') {
             wp_enqueue_style(
                 'simplecv-admin-resume',
-                SIMPLECV_CLASSIC_URL . 'css/admin-resume.css',
+                SIMPLECV_URL . 'css/admin-resume.css',
                 [],
-                SIMPLECV_CLASSIC_VERSION
+                SIMPLECV_VERSION
             );
         }
     }
@@ -56,7 +56,7 @@ class SimpleCV_Resume_Metabox {
     public function register_metabox() {
         $cmb = new_cmb2_box([
             'id'            => $this->prefix . 'resume_metabox',
-            'title'         => __('Resume Details', SIMPLECV_CLASSIC_TEXTDOMAIN),
+            'title'         => __('Resume Details', SIMPLECV_TEXTDOMAIN),
             'object_types'  => ['resume'],
             'context'       => 'normal',
             'priority'      => 'high',
@@ -78,13 +78,13 @@ class SimpleCV_Resume_Metabox {
      */
     private function add_basic_fields($cmb) {
         $cmb->add_field([
-            'name' => __('Full Name', SIMPLECV_CLASSIC_TEXTDOMAIN),
+            'name' => __('Full Name', SIMPLECV_TEXTDOMAIN),
             'id'   => $this->prefix . 'full_name',
             'type' => 'text',
         ]);
 
         $cmb->add_field([
-            'name' => __('Job Title / Role', SIMPLECV_CLASSIC_TEXTDOMAIN),
+            'name' => __('Job Title / Role', SIMPLECV_TEXTDOMAIN),
             'id'   => $this->prefix . 'job_title',
             'type' => 'text',
         ]);
@@ -100,10 +100,10 @@ class SimpleCV_Resume_Metabox {
         $group = $cmb->add_field([
             'id'          => $this->prefix . 'contact_info',
             'type'        => 'group',
-            'description' => __('Enter contact information', SIMPLECV_CLASSIC_TEXTDOMAIN),
+            'description' => __('Enter contact information', SIMPLECV_TEXTDOMAIN),
             'repeatable'  => false,
             'options'     => [
-                'group_title'   => __('Contact Info', SIMPLECV_CLASSIC_TEXTDOMAIN),
+                'group_title'   => __('Contact Info', SIMPLECV_TEXTDOMAIN),
                 'add_button'    => false,
                 'remove_button' => false,
                 'closed'        => false,
@@ -135,7 +135,7 @@ class SimpleCV_Resume_Metabox {
      */
     private function add_summary($cmb) {
         $cmb->add_field([
-            'name' => __('Professional Summary', SIMPLECV_CLASSIC_TEXTDOMAIN),
+            'name' => __('Professional Summary', SIMPLECV_TEXTDOMAIN),
             'id'   => $this->prefix . 'summary',
             'type' => 'wysiwyg',
             'options' => [
@@ -156,11 +156,11 @@ class SimpleCV_Resume_Metabox {
         $group = $cmb->add_field([
             'id'          => $this->prefix . 'skills',
             'type'        => 'group',
-            'description' => __('Add multiple skill categories and descriptions', SIMPLECV_CLASSIC_TEXTDOMAIN),
+            'description' => __('Add multiple skill categories and descriptions', SIMPLECV_TEXTDOMAIN),
             'options'     => [
-                'group_title'   => __('Skill Set {#}', SIMPLECV_CLASSIC_TEXTDOMAIN),
-                'add_button'    => __('Add Another Skill Set', SIMPLECV_CLASSIC_TEXTDOMAIN),
-                'remove_button' => __('Remove Skill Set', SIMPLECV_CLASSIC_TEXTDOMAIN),
+                'group_title'   => __('Skill Set {#}', SIMPLECV_TEXTDOMAIN),
+                'add_button'    => __('Add Another Skill Set', SIMPLECV_TEXTDOMAIN),
+                'remove_button' => __('Remove Skill Set', SIMPLECV_TEXTDOMAIN),
                 'sortable'      => true,
             ],
         ]);
@@ -188,11 +188,11 @@ class SimpleCV_Resume_Metabox {
         $group = $cmb->add_field([
             'id'          => $this->prefix . 'experience',
             'type'        => 'group',
-            'description' => __('List previous work experiences', SIMPLECV_CLASSIC_TEXTDOMAIN),
+            'description' => __('List previous work experiences', SIMPLECV_TEXTDOMAIN),
             'options'     => [
-                'group_title'   => __('Job {#}', SIMPLECV_CLASSIC_TEXTDOMAIN),
-                'add_button'    => __('Add Another Job', SIMPLECV_CLASSIC_TEXTDOMAIN),
-                'remove_button' => __('Remove Job', SIMPLECV_CLASSIC_TEXTDOMAIN),
+                'group_title'   => __('Job {#}', SIMPLECV_TEXTDOMAIN),
+                'add_button'    => __('Add Another Job', SIMPLECV_TEXTDOMAIN),
+                'remove_button' => __('Remove Job', SIMPLECV_TEXTDOMAIN),
                 'sortable'      => true,
             ],
         ]);
@@ -252,11 +252,11 @@ class SimpleCV_Resume_Metabox {
         $group = $cmb->add_field([
             'id'          => $this->prefix . 'education',
             'type'        => 'group',
-            'description' => __('List educational qualifications', SIMPLECV_CLASSIC_TEXTDOMAIN),
+            'description' => __('List educational qualifications', SIMPLECV_TEXTDOMAIN),
             'options'     => [
-                'group_title'   => __('Education {#}', SIMPLECV_CLASSIC_TEXTDOMAIN),
-                'add_button'    => __('Add Another Education', SIMPLECV_CLASSIC_TEXTDOMAIN),
-                'remove_button' => __('Remove Education', SIMPLECV_CLASSIC_TEXTDOMAIN),
+                'group_title'   => __('Education {#}', SIMPLECV_TEXTDOMAIN),
+                'add_button'    => __('Add Another Education', SIMPLECV_TEXTDOMAIN),
+                'remove_button' => __('Remove Education', SIMPLECV_TEXTDOMAIN),
                 'sortable'      => true,
             ],
         ]);

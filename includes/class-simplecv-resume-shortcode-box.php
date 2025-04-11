@@ -30,7 +30,7 @@ class SimpleCV_Resume_Shortcode_Box {
     public function add_shortcode_metabox() {
         add_meta_box(
             'simplecv_resume_shortcode_box',
-            __('Resume Shortcode', SIMPLECV_CLASSIC_TEXTDOMAIN),
+            __('Resume Shortcode', SIMPLECV_TEXTDOMAIN),
             [$this, 'render_shortcode_metabox'],
             'resume',
             'side',
@@ -49,28 +49,28 @@ class SimpleCV_Resume_Shortcode_Box {
      */
     public function render_shortcode_metabox($post) {
         if ($post->post_status !== 'publish') {
-            echo '<p>' . esc_html__('This resume must be published to generate a shortcode.', SIMPLECV_CLASSIC_TEXTDOMAIN) . '</p>';
+            echo '<p>' . esc_html__('This resume must be published to generate a shortcode.', SIMPLECV_TEXTDOMAIN) . '</p>';
             return;
         }
 
         $shortcode = sprintf('[simplecv_resume id="%d"]', $post->ID);
         ?>
-        <p><?php _e('To display this resume on a page or post, copy and paste the shortcode below:', SIMPLECV_CLASSIC_TEXTDOMAIN); ?></p>
+        <p><?php _e('To display this resume on a page or post, copy and paste the shortcode below:', SIMPLECV_TEXTDOMAIN); ?></p>
 
         <div style="margin-bottom: 10px;">
             <input type="text" readonly value="<?php echo esc_attr($shortcode); ?>" id="simplecv-shortcode" style="width: 100%; font-family: monospace;">
         </div>
 
         <button type="button" class="button button-small" id="simplecv-copy-button">
-            <?php _e('Copy Shortcode', SIMPLECV_CLASSIC_TEXTDOMAIN); ?>
+            <?php _e('Copy Shortcode', SIMPLECV_TEXTDOMAIN); ?>
         </button>
 
         <span id="simplecv-copy-success" style="margin-left: 10px; display: none; color: green;">
-            <?php _e('Copied!', SIMPLECV_CLASSIC_TEXTDOMAIN); ?>
+            <?php _e('Copied!', SIMPLECV_TEXTDOMAIN); ?>
         </span>
         <p style="margin-top: 10px;">
             <a href="https://bimendra.me/wordpress/plugins/simplecv" target="_blank">
-                <?php _e('View plugin documentation ↗', SIMPLECV_CLASSIC_TEXTDOMAIN); ?>
+                <?php _e('View plugin documentation ↗', SIMPLECV_TEXTDOMAIN); ?>
             </a>
         </p>
         <?php
@@ -90,9 +90,9 @@ class SimpleCV_Resume_Shortcode_Box {
         if ($hook === 'post.php' && $post && $post->post_type === 'resume') {
             wp_enqueue_script(
                 'simplecv-shortcode-copy',
-                SIMPLECV_CLASSIC_URL . 'js/admin-shortcode-copy.js',
+                SIMPLECV_URL . 'js/admin-shortcode-copy.js',
                 [],
-                SIMPLECV_CLASSIC_VERSION,
+                SIMPLECV_VERSION,
                 true
             );
         }

@@ -38,17 +38,17 @@ class SimpleCV_Resume_Shortcode {
         $resume_id = intval($atts['id']);
 
         if (get_post_type($resume_id) !== 'resume') {
-            return '<p>' . esc_html__('Invalid resume ID.', SIMPLECV_CLASSIC_TEXTDOMAIN) . '</p>';
+            return '<p>' . esc_html__('Invalid resume ID.', SIMPLECV_TEXTDOMAIN) . '</p>';
         }
 
         ob_start();
 
-        $template_path = SIMPLECV_CLASSIC_PATH . 'templates/resume-output.php';
+        $template_path = SIMPLECV_PATH . 'templates/resume-output.php';
 
         if (file_exists($template_path)) {
             include $template_path;
         } else {
-            echo '<p>' . esc_html__('Resume template not found.', SIMPLECV_CLASSIC_TEXTDOMAIN) . '</p>';
+            echo '<p>' . esc_html__('Resume template not found.', SIMPLECV_TEXTDOMAIN) . '</p>';
         }
 
         return ob_get_clean();
