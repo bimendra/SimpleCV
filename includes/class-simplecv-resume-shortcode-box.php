@@ -68,6 +68,11 @@ class SimpleCV_Resume_Shortcode_Box {
         <span id="simplecv-copy-success" style="margin-left: 10px; display: none; color: green;">
             <?php _e('Copied!', SIMPLECV_CLASSIC_TEXTDOMAIN); ?>
         </span>
+        <p style="margin-top: 10px;">
+            <a href="https://bimendra.me/wordpress/plugins/simplecv" target="_blank">
+                <?php _e('View plugin documentation ↗', SIMPLECV_CLASSIC_TEXTDOMAIN); ?>
+            </a>
+        </p>
         <?php
     }
 

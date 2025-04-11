@@ -101,10 +101,12 @@ if (!apply_filters('simplecv_cmb2_unmet', false)) {
     require_once SIMPLECV_CLASSIC_PATH . 'includes/class-simplecv-resume-frontend.php';
     require_once SIMPLECV_CLASSIC_PATH . 'includes/class-simplecv-resume-shortcode.php';
     require_once SIMPLECV_CLASSIC_PATH . 'includes/class-simplecv-resume-shortcode-box.php';
+    require_once SIMPLECV_CLASSIC_PATH . 'includes/class-simplecv-plugin-meta.php';
 
     new SimpleCV_Resume_CPT();
     new SimpleCV_Resume_Metabox();
     new SimpleCV_Resume_Frontend();
     new SimpleCV_Resume_Shortcode();
     new SimpleCV_Resume_Shortcode_Box();
+    new SimpleCV_Plugin_Meta();
 }
