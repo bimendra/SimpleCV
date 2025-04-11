@@ -1,0 +1,37 @@
+.resume {
+  font-family: sans-serif;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.resume h1, .resume h2, .resume h3 {
+  margin-top: 1rem;
+  color: #333;
+}
+
+.resume ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resume li {
+  margin: 0.25rem 0;
+}
+
+.resume .job-block, .resume .edu-block, .resume .skill-block {
+  margin-bottom: 1.5rem;
+}
+
+.resume a {
+  color: #0073aa;
+  text-decoration: none;
+}
+
+.resume a:hover {
+  text-decoration: underline;
+}
+

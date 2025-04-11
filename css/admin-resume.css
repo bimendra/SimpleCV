@@ -1,0 +1,15 @@
+/**
+* Hide close buttons on the top left hand corner, comes defaults
+* with CMB2, but it's wired 
+*/
+button[data-selector="_simplecv_skills_repeat"],
+button[data-selector="_simplecv_education_repeat"],
+button[data-selector="_simplecv_experience_repeat"] {
+  display: none;
+}
+/**
+* With button gone, no need for the extra left hand side padding
+*/
+#poststuff .repeatable .cmb-group-title {
+  padding-left: inherit !important;
+}
