@@ -199,7 +199,7 @@ class SimpleCV_Resume_Metabox {
 
         $fields = [
             ['Company Name', 'company', 'text'],
-            ['Website URL', 'company_url', 'text_url'],
+            ['LinkedIn URL', 'company_linkedin', 'text_url'],
             ['Company Logo (optional)', 'company_logo', 'file'],
             ['Role', 'role', 'text'],
             ['Still Working Here?', 'still_working', 'checkbox'],
