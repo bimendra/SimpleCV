@@ -151,10 +151,17 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                             <?php echo esc_html($job['company']); ?>
                         <?php endif; ?>
                     </p>
-                    <p class="simplecv-resume__experience-start-end">
-                        <?php echo esc_html($job['start_date']); ?> – 
-                        <?php echo !empty($job['still_working']) ? esc_html__('Present', SIMPLECV_TEXTDOMAIN) : esc_html($job['end_date']); ?>
-                    </p>
+                    <?php
+                    $start_date = !empty($job['start_date']) ? date_i18n(get_option('date_format'), strtotime($job['start_date'])) : '';
+                    $end_date = !empty($job['still_working'])
+                        ? esc_html__('Present', SIMPLECV_TEXTDOMAIN)
+                        : (!empty($job['end_date']) ? date_i18n(get_option('date_format'), strtotime($job['end_date'])) : '');
+                    ?>
+                    <?php if ($start_date || $end_date): ?>
+                        <p class="simplecv-resume__experience-start-end">
+                            <?php echo esc_html(trim("$start_date – $end_date", ' –')); ?>
+                        </p>
+                    <?php endif; ?>
                     <?php if (!empty($job['tech_used'])): ?>
                         <p><strong><?php esc_html_e('Technologies:', SIMPLECV_TEXTDOMAIN); ?></strong> <?php echo esc_html($job['tech_used']); ?></p>
                     <?php endif; ?>
@@ -186,10 +193,17 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                             <?php echo esc_html($edu['institute']); ?>
                         <?php endif; ?>
                     </p>
-                    <p>
-                        <?php echo esc_html($edu['start_date']); ?> – 
-                        <?php echo !empty($edu['reading']) ? esc_html__('Present', SIMPLECV_TEXTDOMAIN) : esc_html($edu['end_date']); ?>
-                    </p>
+                    <?php
+                    $edu_start = !empty($edu['start_date']) ? date_i18n(get_option('date_format'), strtotime($edu['start_date'])) : '';
+                    $edu_end = !empty($edu['reading'])
+                        ? esc_html__('Present', SIMPLECV_TEXTDOMAIN)
+                        : (!empty($edu['end_date']) ? date_i18n(get_option('date_format'), strtotime($edu['end_date'])) : '');
+                    ?>
+                    <?php if ($edu_start || $edu_end): ?>
+                        <p class="simplecv-resume__education-start-end">
+                            <?php echo esc_html(trim("$edu_start – $edu_end", ' –')); ?>
+                        </p>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         </div>
