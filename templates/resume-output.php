@@ -16,7 +16,6 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
 <div class="simplecv-resume" id="<?php echo esc_attr("simplecv-resume-{$resume_id}"); ?>">
     <h1><?php echo esc_html($full_name); ?></h1>
     <h2><?php echo esc_html($job_title); ?></h2>
-
     <?php if (!empty($contact)): ?>
         <div class="simplecv-resume__contact-info">
             <?php
@@ -123,7 +122,6 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
             <?php echo wpautop(wp_kses_post($summary)); ?>
         </div>
     <?php endif; ?>
-
     <?php if (!empty($skills)): ?>
         <div class="simplecv-resume__skills">
             <h3><?php esc_html_e('Skills', SIMPLECV_TEXTDOMAIN); ?></h3>
@@ -135,7 +133,6 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-
     <?php if (!empty($experience)): ?>
         <div class="simplecv-resume__experience">
             <h3><?php esc_html_e('Work Experience', SIMPLECV_TEXTDOMAIN); ?></h3>
@@ -146,9 +143,7 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                             <img src="<?php echo esc_url($job['company_logo']); ?>" alt="<?php echo esc_attr($job['company'] ?? ''); ?>" />
                         </div>
                     <?php endif; ?>
-
                     <h4 class="simplecv-resume__experience-role"><?php echo esc_html($job['role']); ?></h4>
-
                     <p class="simplecv-resume__experience-company">
                         <?php if (!empty($job['company_linkedin'])): ?>
                             <a href="<?php echo esc_url($job['company_linkedin']); ?>" target="_blank"><?php echo esc_html($job['company']); ?></a>
@@ -156,12 +151,10 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                             <?php echo esc_html($job['company']); ?>
                         <?php endif; ?>
                     </p>
-
                     <p class="simplecv-resume__experience-start-end">
                         <?php echo esc_html($job['start_date']); ?> – 
                         <?php echo !empty($job['still_working']) ? esc_html__('Present', SIMPLECV_TEXTDOMAIN) : esc_html($job['end_date']); ?>
                     </p>
-
                     <?php if (!empty($job['tech_used'])): ?>
                         <p><strong><?php esc_html_e('Technologies:', SIMPLECV_TEXTDOMAIN); ?></strong> <?php echo esc_html($job['tech_used']); ?></p>
                     <?php endif; ?>
@@ -175,7 +168,6 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-
     <?php if (!empty($education)): ?>
         <div class="simplecv-resume__education">
             <h3><?php esc_html_e('Education', SIMPLECV_TEXTDOMAIN); ?></h3>
