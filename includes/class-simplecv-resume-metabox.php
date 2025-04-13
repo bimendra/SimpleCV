@@ -263,8 +263,8 @@ class SimpleCV_Resume_Metabox {
 
         $fields = [
             ['Institute Name', 'institute', 'text'],
-            ['Website URL', 'institute_url', 'text_url'],
-            ['Institute Logo (optional)', 'logo', 'file'],
+            ['LinkedIn', 'institute_linkedin', 'text_url'],
+            ['Institute Logo (optional)', 'institute_logo', 'file'],
             ['Program Name', 'program', 'text'],
             ['Currently Reading', 'reading', 'checkbox'],
             ['Start Date', 'start_date', 'text_date', 'Y-m-d'],
@@ -279,6 +279,13 @@ class SimpleCV_Resume_Metabox {
             ];
             if (isset($field[3])) {
                 $args['date_format'] = $field[3];
+            }
+
+            if ($field[1] === 'institute_logo') {
+                $args['options'] = ['url' => false];
+                $args['text'] = ['add_upload_file_text' => 'Add logo'];
+                $args['query_args'] = ['type' => ['image/jpeg', 'image/png']];
+                $args['preview_size'] = 'thumbnail';
             }
 
             $cmb->add_group_field($group, $args);
