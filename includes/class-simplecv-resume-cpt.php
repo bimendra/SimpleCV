@@ -30,14 +30,14 @@ class SimpleCV_Resume_CPT {
             'name'                  => __('Resumes', SIMPLECV_TEXTDOMAIN),
             'singular_name'         => __('Resume', SIMPLECV_TEXTDOMAIN),
             'add_new'               => __('Add New', SIMPLECV_TEXTDOMAIN),
-            'add_new_item'          => __('Add New Resume', SIMPLECV_TEXTDOMAIN),
+            'add_new_item'          => __('Add Resume', SIMPLECV_TEXTDOMAIN),
             'edit_item'             => __('Edit Resume', SIMPLECV_TEXTDOMAIN),
             'new_item'              => __('New Resume', SIMPLECV_TEXTDOMAIN),
             'view_item'             => __('View Resume', SIMPLECV_TEXTDOMAIN),
             'search_items'          => __('Search Resumes', SIMPLECV_TEXTDOMAIN),
             'not_found'             => __('No resumes found', SIMPLECV_TEXTDOMAIN),
             'not_found_in_trash'    => __('No resumes found in trash', SIMPLECV_TEXTDOMAIN),
-            'menu_name'             => __('Resumes', SIMPLECV_TEXTDOMAIN),
+            'menu_name'             => __('SimpleCV', SIMPLECV_TEXTDOMAIN),
         ];
 
         $args = [
