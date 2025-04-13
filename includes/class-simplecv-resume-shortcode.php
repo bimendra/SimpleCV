@@ -9,6 +9,12 @@ defined('ABSPATH') || exit;
  * @since 1.0
  */
 class SimpleCV_Resume_Shortcode {
+    /**
+     * The resume ID currently being rendered.
+     *
+     * @var int|null
+     */
+    private $rendered_resume_id = null;
 
     /**
      * Constructor. Registers the shortcode.
@@ -17,6 +23,7 @@ class SimpleCV_Resume_Shortcode {
      */
     public function __construct() {
         add_shortcode('simplecv_resume', [$this, 'render_shortcode']);
+        add_action('admin_bar_menu', [$this, 'add_admin_bar_link'], 100);
     }
 
     /**
@@ -41,6 +48,8 @@ class SimpleCV_Resume_Shortcode {
             return '<p>' . esc_html__('Invalid resume ID.', SIMPLECV_TEXTDOMAIN) . '</p>';
         }
 
+        $this->rendered_resume_id = $resume_id;
+
         ob_start();
 
         $template_path = SIMPLECV_PATH . 'templates/resume-output.php';
@@ -52,5 +61,34 @@ class SimpleCV_Resume_Shortcode {
         }
 
         return ob_get_clean();
+    }
+
+    /**
+     * Adds an "Edit Resume" link to the admin bar if a resume was rendered via shortcode.
+     *
+     * @since 1.0
+     * @param WP_Admin_Bar $admin_bar The WordPress admin bar object.
+     */
+    public function add_admin_bar_link($admin_bar) {
+        if (
+            is_admin() ||
+            !is_user_logged_in() ||
+            !current_user_can('edit_posts') ||
+            !$this->rendered_resume_id
+        ) {
+            return;
+        }
+
+        $resume_id = $this->rendered_resume_id;
+
+        $admin_bar->add_node([
+            'id'    => 'simplecv-edit-resume',
+            'title' => __('Edit Resume', SIMPLECV_TEXTDOMAIN),
+            'href'  => admin_url('post.php?post=' . $resume_id . '&action=edit'),
+            'meta'  => [
+                'title' => __('Edit this resume post', SIMPLECV_TEXTDOMAIN),
+                'class' => 'simplecv-edit-resume-link',
+            ],
+        ]);
     }
 }
