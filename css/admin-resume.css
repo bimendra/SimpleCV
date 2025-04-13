@@ -4,7 +4,8 @@
 */
 button[data-selector="_simplecv_skills_repeat"],
 button[data-selector="_simplecv_education_repeat"],
-button[data-selector="_simplecv_experience_repeat"] {
+button[data-selector="_simplecv_experience_repeat"],
+button[data-selector="_simplecv_professional_networks_repeat"] {
   display: none;
 }
 /**

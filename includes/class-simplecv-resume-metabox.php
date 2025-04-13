@@ -64,6 +64,7 @@ class SimpleCV_Resume_Metabox {
 
         $this->add_basic_fields($cmb);
         $this->add_contact_group($cmb);
+        $this->add_professional_networks_group($cmb);
         $this->add_summary($cmb);
         $this->add_skills_group($cmb);
         $this->add_experience_group($cmb);
@@ -91,13 +92,13 @@ class SimpleCV_Resume_Metabox {
     }
 
     /**
-     * Add contact information group (email, phone, links).
+     * Add contact information group (email, phone, location, links).
      *
      * @param object $cmb The CMB2 box object.
      * @since 1.0
      */
     private function add_contact_group($cmb) {
-        $group = $cmb->add_field([
+        $group_id = $cmb->add_field([
             'id'          => $this->prefix . 'contact_info',
             'type'        => 'group',
             'description' => __('Enter contact information', SIMPLECV_TEXTDOMAIN),
@@ -112,19 +113,65 @@ class SimpleCV_Resume_Metabox {
 
         $fields = [
             ['Phone', 'phone', 'text'],
+            ['City', 'city', 'text'],
+            ['Country', 'country', 'text'],
             ['Email', 'email', 'text_email'],
             ['LinkedIn (optional)', 'linkedin', 'text_url'],
-            ['GitHub (optional)', 'github', 'text_url'],
             ['Website (optional)', 'website', 'text_url'],
         ];
 
         foreach ($fields as [$name, $id, $type]) {
-            $cmb->add_group_field($group, [
-                'name' => $name,
+            $cmb->add_group_field($group_id, [
+                'name' => __($name, SIMPLECV_TEXTDOMAIN),
                 'id'   => $id,
                 'type' => $type,
             ]);
         }
+    }
+
+    /**
+     * Add professional network links as a repeatable group field.
+     *
+     * @param object $cmb The CMB2 box object.
+     * @since 1.0
+     */
+    private function add_professional_networks_group($cmb) {
+        $group_id = $cmb->add_field([
+            'id'          => $this->prefix . 'professional_networks',
+            'type'        => 'group',
+            'description' => __('Add links to your professional or creative networks', SIMPLECV_TEXTDOMAIN),
+            'repeatable'  => true,
+            'options'     => [
+                'group_title'   => __('Network {#}', SIMPLECV_TEXTDOMAIN),
+                'add_button'    => __('Add Network', SIMPLECV_TEXTDOMAIN),
+                'remove_button' => __('Remove Network', SIMPLECV_TEXTDOMAIN),
+                'sortable'      => true,
+            ],
+        ]);
+
+        $cmb->add_group_field($group_id, [
+            'name'    => __('Platform', SIMPLECV_TEXTDOMAIN),
+            'id'      => 'platform',
+            'type'    => 'select',
+            'options' => [
+                'github'       => 'GitHub',
+                'gitlab'       => 'GitLab',
+                'researchgate' => 'ResearchGate',
+                'dribbble'     => 'Dribbble',
+                'behance'      => 'Behance',
+                'medium'       => 'Medium',
+                'kaggle'       => 'Kaggle',
+                'notion'       => 'Notion',
+                'figma'        => 'Figma',
+                'other'        => __('Other', SIMPLECV_TEXTDOMAIN),
+            ],
+        ]);
+
+        $cmb->add_group_field($group_id, [
+            'name' => __('URL', SIMPLECV_TEXTDOMAIN),
+            'id'   => 'url',
+            'type' => 'text_url',
+        ]);
     }
 
     /**
