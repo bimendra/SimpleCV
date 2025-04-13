@@ -31,6 +31,7 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                     $location = implode(', ', $location_parts);
                 ?>
                 <div class="simplecv-resume__contact-info-row simplecv-resume__contact-info-basic">
+                    <h4><?php _e('Contact Information', SIMPLECV_TEXTDOMAIN); ?></h4>
                     <?php if (!empty($location)) : ?>
                         <div class="simplecv-resume__contact-info-location">
                             <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-location" style="background-image: url('<?php echo SIMPLECV_URL . 'assets/icons/location.svg'; ?>');"></span>
@@ -84,6 +85,7 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                     if (!empty($valid_links)) :
                 ?>
                 <div class="simplecv-resume__contact-info-links">
+                    <h4><?php _e('Other Social Media', SIMPLECV_TEXTDOMAIN); ?></h4>
                     <?php foreach ($valid_links as $link): ?>
                         <?php
                             $platform = sanitize_key($link['platform']);
