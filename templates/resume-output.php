@@ -33,14 +33,14 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                 <div class="simplecv-resume__contact-info-row simplecv-resume__contact-info-basic">
                     <?php if (!empty($location)) : ?>
                         <div class="simplecv-resume__contact-info-location">
-                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-location"></span>
+                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-location" style="background-image: url('<?php echo SIMPLECV_URL . 'assets/icons/location.svg'; ?>');"></span>
                             <span><?php echo $location; ?></span>
                         </div>
                     <?php endif; ?>
 
                     <?php if (!empty($contact['phone'])) : ?>
                         <div class="simplecv-resume__contact-info-phone">
-                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-phone"></span>
+                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-phone" style="background-image: url('<?php echo SIMPLECV_URL . 'assets/icons/phone.svg'; ?>');"></span>
                             <a href="tel:<?php echo esc_attr(preg_replace('/\s+/', '', $contact['phone'])); ?>">
                                 <?php echo esc_html($contact['phone']); ?>
                             </a>
@@ -49,7 +49,7 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
 
                     <?php if (!empty($contact['email'])) : ?>
                         <div class="simplecv-resume__contact-info-email">
-                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-email"></span>
+                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-email" style="background-image: url('<?php echo SIMPLECV_URL . 'assets/icons/email.svg'; ?>');"></span>
                             <a href="mailto:<?php echo esc_attr($contact['email']); ?>">
                                 <?php echo esc_html($contact['email']); ?>
                             </a>
@@ -59,7 +59,7 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                 <div class="simplecv-resume__contact-info-row simplecv-resume__contact-info-online">
                     <?php if (!empty($contact['website'])) : ?>
                         <div class="simplecv-resume__contact-info-website">
-                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-website"></span>
+                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-website" style="background-image: url('<?php echo SIMPLECV_URL . 'assets/icons/generic.svg'; ?>');"></span>
                             <a target="_blank" href=<?php echo esc_attr($contact['website']); ?>>
                                 <?php _e('Website', SIMPLECV_TEXTDOMAIN); ?>
                             </a>
@@ -67,7 +67,7 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                     <?php endif; ?>
                     <?php if (!empty($contact['linkedin'])) : ?>
                         <div class="simplecv-resume__contact-info-linkedin">
-                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-linkedin"></span>
+                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-linkedin" style="background-image: url('<?php echo SIMPLECV_URL . 'assets/icons/linkedin.svg'; ?>');"></span>
                             <a target="_blank" href=<?php echo esc_attr($contact['linkedin']); ?>>
                                 LinkedIn
                             </a>
@@ -88,7 +88,7 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                         <?php
                             $platform = sanitize_key($link['platform']);
                             $url = esc_url($link['url']);
-                            $label = ucfirst($platform);
+                            $label = ucfirst($platform);                            
 
                             switch ($platform) {
                                 case 'github':       $label = 'GitHub'; break;
@@ -103,9 +103,21 @@ $education  = get_post_meta($resume_id, $prefix . 'education', true);
                                 case 'linkedin':     $label = 'LinkedIn'; break;
                                 case 'other':        $label = __('Portfolio', SIMPLECV_TEXTDOMAIN); break;
                             }
+
+                            $available_icons = [
+                                'behance',
+                                'dribbble',
+                                'github',
+                                'linkedin',
+                                'researchgate',
+                            ];
+
+                            $icon_dir = SIMPLECV_URL . 'assets/icons/';
+                            $icon_key = in_array($platform, $available_icons) ? $platform : 'generic';
+                            $icon_url = $icon_dir . $icon_key . '.svg';
                         ?>
                         <div class="simplecv-resume__contact-info-link simplecv-resume--contact-info-link-<?php echo esc_attr($platform); ?>">
-                            <span class="simplecv-resume__contact-info-icon simplecv-resume__contact-info-icon-<?php echo esc_attr($platform); ?>"></span>
+                            <span class="simplecv-resume__contact-info-icon" style="background-image: url('<?php echo esc_url($icon_url); ?>');"></span>
                             <a href="<?php echo $url; ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html($label); ?></a>
                         </div>
                     <?php endforeach; ?>
